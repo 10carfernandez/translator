@@ -1,0 +1,69 @@
+
+public class Sorts {
+	
+	public static double[] Merge(double[] left, double[] right){
+		int L = left.length;
+		int R = right.length;
+		double[] ans = new double[L+R];
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		
+		while (i < L || j < R){
+			
+			if (i == L && j < R){
+				ans[k] = right[j];
+				j++;
+				k++;
+				continue;
+			}
+			
+			if (j == R && i < L){
+				ans[k] = left[i];
+				i++;
+				k++; 
+				continue;
+			}
+			
+			if (left[i] < right[j]){
+				ans[k] = left[i];
+				i++;
+			}
+			else{
+				ans[k] = right[j];
+				j++;
+			}
+			k++;
+		}
+		return ans;
+	}
+	
+	public static double[] MergeSort(double[] arr){
+		int n = arr.length;
+		
+		if (n < 2){
+			return arr;
+		}
+		else{
+			double[] left = new double[(int)Math.floor(n/2)];
+			double[] right = new double[n - left.length];
+			
+			for (int i = 0; i < left.length; i++){
+				left[i] = arr[i];
+			}
+			
+			for (int i = 0; i < right.length; i++){
+				right[i] = arr[i + left.length];
+			}
+			
+			double newLeft[] = MergeSort(left);
+			double newRight[] = MergeSort(right);
+			
+			arr = Merge(newLeft, newRight);
+			
+			return arr;
+		}
+		
+	}
+
+}
