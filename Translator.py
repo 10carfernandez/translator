@@ -2,7 +2,7 @@ from urllib.request import Request, urlopen
 import re
 
 #Get current directory
-cd = "C:\\Users\\Carlos\\Documents\\HispanicHackathonFiles\\"
+cd = "C:\\Users\\Carlos\\Documents\\DiversityHackathonFiles\\"
 
 #Open dictionary used for translating
 dicfilename = "JavaKeywords.txt"
